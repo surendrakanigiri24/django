@@ -12,6 +12,7 @@ def february (request):
 def march (request):
     return HttpResponse("I'm march")
 
+# Dynamic code building
 def monthly_challenge (request, month):
     challenge_text = None
 

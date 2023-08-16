@@ -3,8 +3,10 @@ from . import views
 
 
 urlpatterns = [
-    # path("january", views.index),
-    # path("february", views.february),
-    # path("march", views.march)
+    # Static url paths
+    path("january", views.index),
+    path("february", views.february),
+    path("march", views.march),
+    # Dynamic url building
     path("<month>", views.monthly_challenge)
 ]
