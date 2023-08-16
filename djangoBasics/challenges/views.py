@@ -13,6 +13,10 @@ def march (request):
     return HttpResponse("I'm march")
 
 # Dynamic code building
+
+def monthly_challenge_using_numbers (request, month):
+    return HttpResponse(month)
+
 def monthly_challenge (request, month):
     challenge_text = None
 
