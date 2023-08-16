@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
 # Buliding dictionary for dynamic content
 months = {
@@ -31,7 +31,14 @@ def march (request):
 # Dynamic code building
 
 def monthly_challenge_using_numbers (request, month):
-    return HttpResponse(month)
+    # Redirection
+    months_keys = list(months.keys())
+
+    if(month > len(months_keys)):
+        return HttpResponseNotFound("Invalid month !")
+
+    redirect_month = months_keys[month - 1]
+    return HttpResponseRedirect("/challenges/" + redirect_month)
 
 def monthly_challenge (request, month):
     challenge_text = None
@@ -56,3 +63,4 @@ def monthly_challenge_dynamic_appending (request, month):
         return HttpResponse(challege_text)
     except:
         return HttpResponseNotFound("Not a valid month !")
+    
