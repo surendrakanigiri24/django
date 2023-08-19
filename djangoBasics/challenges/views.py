@@ -62,8 +62,8 @@ def monthly_challenge (request, month):
 def monthly_challenge_dynamic_appending (request, month):
     try:
         challege_text = months[month]
-        print(challege_text)
-        return HttpResponse(challege_text)
+        resopnse = f"<h1>{challege_text}</h1>"  # Html tag appending
+        return HttpResponse(resopnse)
     except:
-        return HttpResponseNotFound("Not a valid month !")
+        return HttpResponseNotFound("<h1>Not a valid month!</h1>")
     
