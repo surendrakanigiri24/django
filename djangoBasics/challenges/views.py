@@ -21,7 +21,17 @@ months = {
 # Create your views here.
 
 def index (request):
-    return HttpResponse("I am working!")
+    list_items = ""
+    months_keys = list(months.keys())
+
+    for month in months_keys:
+        capitalized_month = month.capitalize()
+        month_path = reverse("monthly-challenge", args=[month])
+        list_items += f"<li><a href=\"{month_path}\">{capitalized_month}</a></li>"
+
+    response = f"<ul>{list_items}</ul>"
+    return HttpResponse(response)
+
 
 def february (request):
     return HttpResponse("I'm february")

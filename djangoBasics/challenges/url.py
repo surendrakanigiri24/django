@@ -3,6 +3,7 @@ from . import views
 
 
 urlpatterns = [
+    path("", views.index),   # challenges
     # Static url paths
     path("january", views.index),
     path("february", views.february),
