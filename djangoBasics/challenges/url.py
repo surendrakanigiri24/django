@@ -10,5 +10,5 @@ urlpatterns = [
     # Dynamic url building
     path("<int:month>", views.monthly_challenge_using_numbers),
     # path("<str:month>", views.monthly_challenge),
-    path("<str:month>", views.monthly_challenge_dynamic_appending)
+    path("<str:month>", views.monthly_challenge_dynamic_appending, name="monthly-challenge")
 ]

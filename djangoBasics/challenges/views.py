@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse # allows retrieving url details from the url's.py file through the name value provided.
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
 # Buliding dictionary for dynamic content
@@ -38,7 +39,9 @@ def monthly_challenge_using_numbers (request, month):
         return HttpResponseNotFound("Invalid month !")
 
     redirect_month = months_keys[month - 1]
-    return HttpResponseRedirect("/challenges/" + redirect_month)
+    redirect_path = reverse("monthly-challenge", args=[redirect_month]) # Because of this we can avoid hardcoded path like /challenges
+    return HttpResponseRedirect(redirect_path)
+    # return HttpResponseRedirect("/challenges/" + redirect_month)
 
 def monthly_challenge (request, month):
     challenge_text = None
